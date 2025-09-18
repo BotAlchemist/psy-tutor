@@ -22,7 +22,7 @@ with st.sidebar:
     st.header("Settings")
     #api_key = st.text_input("OpenAI API Key", type="password", value=os.getenv("OPENAI_API_KEY", ""))
     api_key= os.getenv("OPENAI_API_KEY")
-    model_name = st.text_input("Model", value="gpt-4o-mini")
+    model_name = "gpt-4o-mini"
     show_page_text = st.checkbox("Show extracted page text (current page only)", value=False)
     st.markdown("---")
     st.caption("The model will read the selected page **plus** the previous and next page (if they exist).")
@@ -171,6 +171,7 @@ if ask:
             answer = call_llm(api_key, model_name, context_text, question)
         st.markdown("**Answer:**")
         st.write(answer)
+
 
 
 
