@@ -11,22 +11,25 @@ except ImportError:
     OpenAI = None
 
 
-
+user_key = st.text_input("Enter Key", type="password")
+api_key= os.getenv("OPENAI_API_KEY")
+pass_key= os.getenv("PASSWORD")
+model_name = "gpt-4o-mini"
 # ------------------ Streamlit UI ------------------
 st.set_page_config(page_title="📘 PDF Tutor (Chapters Folder)", page_icon="📘", layout="centered")
 st.title("📘 PDF Tutor")
 st.caption("Reads PDFs from ./psychology_book → pick chapter → choose page → ask a guided question.")
 
 #-------- Settings / API Key ----------
-with st.sidebar:
-    st.header("Settings")
-    user_key = st.text_input("Enter Key", type="password")
-    api_key= os.getenv("OPENAI_API_KEY")
-    pass_key= os.getenv("PASSWORD")
-    model_name = "gpt-4o-mini"
-    show_page_text = st.checkbox("Show extracted page text (current page only)", value=False)
-    st.markdown("---")
-    st.caption("The model will read the selected page **plus** the previous and next page (if they exist).")
+# with st.sidebar:
+#     st.header("Settings")
+    
+#     api_key= os.getenv("OPENAI_API_KEY")
+#     pass_key= os.getenv("PASSWORD")
+#     model_name = "gpt-4o-mini"
+#     show_page_text = st.checkbox("Show extracted page text (current page only)", value=False)
+#     st.markdown("---")
+#     st.caption("The model will read the selected page **plus** the previous and next page (if they exist).")
 
 if user_key == pass_key:
     # --------- Locate chapters (PDFs) ----------
@@ -177,6 +180,7 @@ if user_key == pass_key:
 else:
     st.warning("Enter pass key")
     
+
 
 
 
