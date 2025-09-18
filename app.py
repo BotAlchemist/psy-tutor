@@ -17,7 +17,7 @@ st.set_page_config(page_title="📘 PDF Tutor (Chapters Folder)", page_icon="�
 st.title("📘 PDF Tutor")
 st.caption("Reads PDFs from ./psychology_book → pick chapter → choose page → ask a guided question.")
 
--------- Settings / API Key ----------
+#-------- Settings / API Key ----------
 with st.sidebar:
     st.header("Settings")
     #api_key = st.text_input("OpenAI API Key", type="password", value=os.getenv("OPENAI_API_KEY", ""))
@@ -171,6 +171,7 @@ if ask:
             answer = call_llm(api_key, model_name, context_text, question)
         st.markdown("**Answer:**")
         st.write(answer)
+
 
 
 
