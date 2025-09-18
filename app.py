@@ -15,6 +15,7 @@ user_key = st.text_input("Enter Key", type="password")
 api_key= os.getenv("OPENAI_API_KEY")
 pass_key= os.getenv("PASSWORD")
 model_name = "gpt-4o-mini"
+show_page_text = st.checkbox("Show extracted page text (current page only)", value=False)
 # ------------------ Streamlit UI ------------------
 st.set_page_config(page_title="📘 PDF Tutor (Chapters Folder)", page_icon="📘", layout="centered")
 st.title("📘 PDF Tutor")
@@ -180,6 +181,7 @@ if user_key == pass_key:
 else:
     st.warning("Enter pass key")
     
+
 
 
 
