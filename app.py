@@ -11,22 +11,21 @@ except ImportError:
     OpenAI = None
 
 
-api_key= os.getenv("OPENAI_API_KEY")
+
 # ------------------ Streamlit UI ------------------
 st.set_page_config(page_title="📘 PDF Tutor (Chapters Folder)", page_icon="📘", layout="centered")
 st.title("📘 PDF Tutor")
 st.caption("Reads PDFs from ./psychology_book → pick chapter → choose page → ask a guided question.")
 
-# -------- Settings / API Key ----------
-# with st.sidebar:
-#     st.header("Settings")
-#     #api_key = st.text_input("OpenAI API Key", type="password", value=os.getenv("OPENAI_API_KEY", ""))
-#     api_key= os.getenv("OPENAI_API_KEY")
-#     model_name = st.text_input("Model", value="gpt-4o-mini")
-#     show_page_text = st.checkbox("Show extracted page text (current page only)", value=False)
-#     st.markdown("---")
-#     st.markdown("Folder: `./psychology_book`")
-#     st.caption("The model will read the selected page **plus** the previous and next page (if they exist).")
+-------- Settings / API Key ----------
+with st.sidebar:
+    st.header("Settings")
+    #api_key = st.text_input("OpenAI API Key", type="password", value=os.getenv("OPENAI_API_KEY", ""))
+    api_key= os.getenv("OPENAI_API_KEY")
+    model_name = st.text_input("Model", value="gpt-4o-mini")
+    show_page_text = st.checkbox("Show extracted page text (current page only)", value=False)
+    st.markdown("---")
+    st.caption("The model will read the selected page **plus** the previous and next page (if they exist).")
 
 # --------- Locate chapters (PDFs) ----------
 ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -172,6 +171,7 @@ if ask:
             answer = call_llm(api_key, model_name, context_text, question)
         st.markdown("**Answer:**")
         st.write(answer)
+
 
 
 
